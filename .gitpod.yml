@@ -1,20 +1,14 @@
-image: gitpod/workspace-full
-
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
-  - init: ./mvnw clean install -U -DskipTests
-    command: ./mvnw spring-boot:run
-    name: Run PetClinic app
+  - name: Script Task
+    init: echo 'go mod tidy' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+    command: echo 'go run .'
 
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
 ports:
-  - port: 8080
+  - name: Frontend
+    description: Port 3000 for the frontend
+    port: 3000
     onOpen: open-preview
 
-vscode:
-  extensions:
-    - VMware.vscode-spring-boot
-    - vscjava.vscode-java-pack
-
-jetbrains:
-  intellij:
-    plugins:
-      - com.haulmont.jpab
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
